@@ -63,9 +63,13 @@
     <Compile Include="Actor\RandomEnemy.cs" />
     <Compile Include="Actor\TraceAI.cs" />
     <Compile Include="Def\Screen.cs" />
+    <Compile Include="Device\BGMLoader.cs" />
     <Compile Include="Device\GameDevice.cs" />
     <Compile Include="Device\Input.cs" />
+    <Compile Include="Device\Loader.cs" />
+    <Compile Include="Device\SELoader.cs" />
     <Compile Include="Device\Sound.cs" />
+    <Compile Include="Device\TextureLoader.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Actor\Player.cs" />
     <Compile Include="Program.cs" />
@@ -75,6 +79,7 @@
     <Compile Include="Scene\GamePlay.cs" />
     <Compile Include="Scene\GoodEnding.cs" />
     <Compile Include="Scene\IScene.cs" />
+    <Compile Include="Scene\LoadScene.cs" />
     <Compile Include="Scene\Scene.cs" />
     <Compile Include="Scene\SceneFader.cs" />
     <Compile Include="Scene\SceneManager.cs" />

@@ -53,7 +53,7 @@ namespace Oikake.Scene
             score.Add(num);
         }
 
-        public void Drow(Renderer renderer)
+        public void Draw(Renderer renderer)
         {
             //描画開始
             renderer.Begin();

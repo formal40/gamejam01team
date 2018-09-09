@@ -11,6 +11,7 @@ namespace Oikake.Scene
         Title,
         GamePlay,
         Ending,
-        GoodEnding
+        GoodEnding,
+        Load
     }
 }

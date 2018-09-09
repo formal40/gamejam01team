@@ -29,7 +29,7 @@ namespace Oikake.Scene
         /// 描画
         /// </summary>
         /// <param name="renderer">描画オブジェクト</param>
-        public void Drow(Renderer renderer)
+        public void Draw(Renderer renderer)
         {
             renderer.Begin();
             renderer.DrawTexture("title", Vector2.Zero);

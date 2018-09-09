@@ -72,7 +72,7 @@ namespace Oikake.Scene
                 return;
             }
 
-            currentScene.Drow(renderer);
+            currentScene.Draw(renderer);
         }
     }
 }

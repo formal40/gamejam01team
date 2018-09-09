@@ -25,9 +25,9 @@ namespace Oikake.Scene
             sound = gameDevice.GetSound();
         }
 
-        public void Drow(Renderer renderer)
+        public void Draw(Renderer renderer)
         {
-            backGroundScene.Drow(renderer);
+            backGroundScene.Draw(renderer);
 
             renderer.Begin();
             renderer.DrawTexture("ending", new Vector2(150, 150));
