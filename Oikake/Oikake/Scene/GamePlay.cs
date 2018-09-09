@@ -15,7 +15,7 @@ namespace Oikake.Scene
 {
     interface IGameMediator
     {
-        void AddActor(Character character);
+        void AddActor(Gadget character);
         void AddScore();
         void AddScore(int num);
     }
@@ -24,7 +24,7 @@ namespace Oikake.Scene
         //private Player player; //プレイヤーとなる白玉
         //private List<Character> characters;
 
-        private CharacterManager characterManager;
+        private GadgetManager gadgetManager;
         private Timer timer;
         private TimerUI timerUI;
         private Score score;
@@ -38,9 +38,9 @@ namespace Oikake.Scene
             sound = gameDevice.GetSound();
         }
 
-        public void AddActor(Character character)
+        public void AddActor(Gadget character)
         {
-            characterManager.Add(character);
+            gadgetManager.Add(character);
         }
 
         public void AddScore()
@@ -60,7 +60,7 @@ namespace Oikake.Scene
             //背景を描画
             renderer.DrawTexture("stage", Vector2.Zero);
 
-            characterManager.Draw(renderer);
+            gadgetManager.Draw(renderer);
 
             timerUI.Draw(renderer);
             score.Draw(renderer);
@@ -80,29 +80,13 @@ namespace Oikake.Scene
         {
             isEndFlag = false;
 
-            characterManager = new CharacterManager();
+            gadgetManager = new GadgetManager();
 
             // characterManager.Add(new Player(this));
             Player player = new Player(this);
-            characterManager.Add(player);
+            gadgetManager.Add(player);
 
-            characterManager.Add(new Enemy(this, new AttackAI(player)));
-            //characterManager.Add(new Enemy(this, new BoundAI()));
-            //characterManager.Add(new Enemy(this, new BoundAI()));
-            //characterManager.Add(new Enemy(this, new RandomAI()));
-            //characterManager.Add(new Enemy(this, new RandomAI()));
-            //characterManager.Add(new Enemy(this, new RandomAI()));
-            characterManager.Add(new Enemy(this, new TraceAI()));
-
-            /*
-            characterManager.Add(new BoundEnemy(this));
-
-            //10体登録
-            for (int i = 0; i < 10; i++)
-            {
-                characterManager.Add(new RandomEnemy(this));
-            }
-            */
+            gadgetManager.Add(new Black(this));
 
             timer = new CountDownTimer(10);
             timerUI = new TimerUI(timer);
@@ -135,7 +119,7 @@ namespace Oikake.Scene
             timer.Update(gameTime);
             score.Update(gameTime);
 
-            characterManager.Update(gameTime);
+            gadgetManager.Update(gameTime);
 
 
             sound.PlayBGM("gameplaybgm");

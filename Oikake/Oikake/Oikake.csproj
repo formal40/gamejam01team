@@ -41,14 +41,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Actor\AI.cs" />
-    <Compile Include="Actor\AttackAI.cs" />
-    <Compile Include="Actor\BoundAI.cs" />
-    <Compile Include="Actor\BoundEnemy - コピー.cs" />
-    <Compile Include="Actor\BoundEnemy.cs" />
+    <Compile Include="Actor\Black.cs" />
     <Compile Include="Actor\BurstEffect.cs" />
-    <Compile Include="Actor\Character.cs" />
-    <Compile Include="Actor\CharacterManager.cs" />
+    <Compile Include="Actor\Gadget.cs" />
+    <Compile Include="Actor\GadgetManager.cs" />
     <Compile Include="Actor\Effects\IParticleMediator.cs" />
     <Compile Include="Actor\Effects\Particle.cs" />
     <Compile Include="Actor\Effects\ParticleBig.cs" />
@@ -57,11 +53,8 @@
     <Compile Include="Actor\Effects\ParticleManager.cs" />
     <Compile Include="Actor\Effects\ParticleMiddle.cs" />
     <Compile Include="Actor\Effects\ParticleSmall.cs" />
-    <Compile Include="Actor\Enemy.cs" />
+    <Compile Include="Actor\Item.cs" />
     <Compile Include="Actor\PlayerBullet.cs" />
-    <Compile Include="Actor\RandomAI.cs" />
-    <Compile Include="Actor\RandomEnemy.cs" />
-    <Compile Include="Actor\TraceAI.cs" />
     <Compile Include="Def\Screen.cs" />
     <Compile Include="Device\BGMLoader.cs" />
     <Compile Include="Device\GameDevice.cs" />

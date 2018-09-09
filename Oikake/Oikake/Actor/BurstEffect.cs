@@ -14,7 +14,7 @@ using Oikake.Util;
 
 namespace Oikake.Actor
 {
-    class BurstEffect : Character
+    class BurstEffect : Gadget
     {
         private Timer timer;
         private int counter;
@@ -35,7 +35,7 @@ namespace Oikake.Actor
         /// ヒット通知
         /// </summary>
         /// <param name="other"></param>
-        public override void Hit(Character other)
+        public override void Hit(Gadget other)
         {
             
         }
