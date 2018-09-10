@@ -16,11 +16,11 @@ namespace Oikake.GameObject
         private Vector2 position;
         private float speed;
 
-        public void Dorw(Renderer renderer)
+        public void Dorw(Renderer renderer, string stageName)
         {
             //背景を描画
-            renderer.DrawTexture("stage", position);
-            renderer.DrawTexture("stage", new Vector2(position.X + Screen.Width, position.Y));
+            renderer.DrawTexture(stageName, position);
+            renderer.DrawTexture(stageName, new Vector2(position.X + Screen.Width, position.Y));
         }
 
         public void Initialize(float speed)

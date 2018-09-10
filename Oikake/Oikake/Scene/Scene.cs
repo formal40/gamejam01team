@@ -9,9 +9,7 @@ namespace Oikake.Scene
     enum Scene
     {
         Title,
-        Field,
-        Forest,
-        Cave,
+        GamePlay,
         Ending,
         GoodEnding,
         Load

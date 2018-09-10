@@ -43,7 +43,11 @@ namespace Oikake.Scene
                 {"title",path },
                 {"white",path },
                 {"pipo-btleffect",path },
-                {"nc47171",path }
+                {"nc47171",path },
+                {"mok",path },
+                {"mnk",path },
+                {"mme",path }
+
             };
 
             return data;
