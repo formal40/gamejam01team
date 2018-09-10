@@ -19,15 +19,22 @@ namespace Oikake.Device
         private static MouseState currentMouse;
         private static MouseState previousMouse;
 
-        public static void Update()
+        private static GamePadState currentButton;
+        private static GamePadState previousButton;
+
+        public static void Update()//変更点。
         {
+            GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
             previousKey = currentKey;
             currentKey = Keyboard.GetState();
 
             previousMouse = currentMouse;
             currentMouse = Mouse.GetState();
 
-            UpdateVelocity();
+            previousButton = currentButton;
+            currentButton = gamePadState;
+
+            UpdateVelocity(gamePadState);
         }
 
         public static Vector2 Velocity()
@@ -35,35 +42,49 @@ namespace Oikake.Device
             return velocity;
         }
 
-        private static void UpdateVelocity()
+        private static void UpdateVelocity(GamePadState gamePadState)//変更点。移動の出力の変更。
         {
             velocity = Vector2.Zero;
 
-            if(currentKey.IsKeyDown(Keys.Right))
+            if (currentKey.IsKeyDown(Keys.Right) || gamePadState.IsButtonDown(Buttons.DPadRight) || gamePadState.IsButtonDown(Buttons.LeftThumbstickRight))
             {
                 velocity.X += 1.0f;
             }
 
-            if (currentKey.IsKeyDown(Keys.Left))
+            if (currentKey.IsKeyDown(Keys.Left) || gamePadState.IsButtonDown(Buttons.DPadLeft) || gamePadState.IsButtonDown(Buttons.LeftThumbstickLeft))
             {
                 velocity.X -= 1.0f;
             }
 
-            if (currentKey.IsKeyDown(Keys.Up))
+            if (currentKey.IsKeyDown(Keys.Up) || gamePadState.IsButtonDown(Buttons.DPadUp) || gamePadState.IsButtonDown(Buttons.LeftThumbstickUp))
             {
                 velocity.Y -= 1.0f;
             }
 
-            if (currentKey.IsKeyDown(Keys.Down))
+            if (currentKey.IsKeyDown(Keys.Down) || gamePadState.IsButtonDown(Buttons.DPadDown) || gamePadState.IsButtonDown(Buttons.LeftThumbstickDown))
             {
                 velocity.Y += 1.0f;
             }
-
 
             if (velocity.Length() != 0)
             {
                 velocity.Normalize();
             }
+        }
+
+        public static bool IsButtonDown(Buttons button)//ボタンが押されたか、前にフレームに押されていなければtrue
+        {
+            return currentButton.IsButtonDown(button) && !previousButton.IsButtonDown(button);
+        }
+
+        public static bool IsButtonUp(Buttons button)//ボタンが離れ続けているか
+        {
+            return !currentButton.IsButtonDown(button) && !previousButton.IsButtonDown(button);
+        }
+
+        public static bool GetButtonDown(Buttons button)//ボタンが押され続けているか
+        {
+            return currentButton.IsButtonDown(button);
         }
 
         /// <summary>
@@ -94,77 +115,6 @@ namespace Oikake.Device
         public static bool GetKeyState(Keys key)
         {
             return currentKey.IsKeyDown(key);
-        }
-
-        ///マウス関連
-        /// <summary>
-        /// マウスの左ボタンが押された瞬間か？
-        /// </summary>
-        /// <returns>現在押されていて、1フレーム前に押されていなければture</returns>
-        public static bool IsMouseLBottonDown()
-        {
-            return currentMouse.LeftButton == ButtonState.Pressed && previousMouse.LeftButton == ButtonState.Released;
-        }
-        
-        /// <summary>
-        /// マウスの左ボタンが押された瞬間か？
-        /// </summary>
-        /// <returns>現在離されていて、1フレーム前に押されていたらture</returns>
-        public static bool IsMouseLBottonUp()
-        {
-            return currentMouse.LeftButton == ButtonState.Released && previousMouse.LeftButton == ButtonState.Pressed;
-        }
-        
-        /// <summary>
-        /// マウスの左ボタンが押されているか？
-        /// </summary>
-        /// <returns>左ボタンが押されていたらture</returns>
-        public static bool IsMouseLBotton()
-        {
-            return currentMouse.LeftButton == ButtonState.Pressed;
-        }
-        
-        /// <summary>
-        /// マウスの右ボタンが押された瞬間か？
-        /// </summary>
-        /// <returns>現在押されていて、1フレーム前に押されていなければture</returns>
-        public static bool IsMouseRBottonDown()
-        {
-            return currentMouse.RightButton == ButtonState.Pressed && previousMouse.RightButton == ButtonState.Released;
-        }
-
-        /// <summary>
-        /// マウスの右ボタンが離された瞬間か？
-        /// </summary>
-        /// <returns>現在離されていて、1フレーム前に押されていたらture</returns>
-        public static bool IsMouseRBottonUp()
-        {
-            return currentMouse.RightButton == ButtonState.Pressed && previousMouse.RightButton == ButtonState.Released;
-        }
-
-        /// <summary>
-        /// マウスの右ボタンが押されているか？
-        /// </summary>
-        /// <returns>左ボタンが押されたいたらture</returns>
-        public static bool IsMouseRBotton()
-        {
-            return currentMouse.RightButton == ButtonState.Pressed;
-        }
-
-        /// <summary>
-        /// マウスの位置を返す
-        /// </summary>
-        public static Vector2 MousePosition
-        {
-            get
-            {
-                return new Vector2(currentMouse.X, currentMouse.Y);
-            }
-        }
-
-        public static int GetMouseWheel()
-        {
-            return previousMouse.ScrollWheelValue - currentMouse.ScrollWheelValue;
         }
     }
 }
