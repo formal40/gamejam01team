@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Oikake.Actor;
 using Oikake.Device;
 using Oikake.Util;
+using Oikake.GameObject;
 
 namespace Oikake.Scene
 {
@@ -30,6 +31,7 @@ namespace Oikake.Scene
         private Score score;
         private bool isEndFlag;
         private Sound sound;
+        private BackGroundObject backGroundObject;
 
         public GamePlay()
         {
@@ -57,8 +59,8 @@ namespace Oikake.Scene
         {
             //描画開始
             renderer.Begin();
-            //背景を描画
-            renderer.DrawTexture("stage", Vector2.Zero);
+
+            backGroundObject.Dorw(renderer);
 
             characterManager.Draw(renderer);
 
@@ -108,6 +110,9 @@ namespace Oikake.Scene
             timerUI = new TimerUI(timer);
 
             score = new Score();
+
+            backGroundObject = new BackGroundObject();
+            backGroundObject.Initialize(10);
         }
 
         public bool IsEnd()
@@ -146,6 +151,8 @@ namespace Oikake.Scene
                 score.shutdown();
                 isEndFlag = true;　//シーン終了へ
             }
+
+            backGroundObject.Update();
         }
     }
 }
