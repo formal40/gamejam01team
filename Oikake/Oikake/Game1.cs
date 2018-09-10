@@ -56,12 +56,10 @@ namespace Oikake
 
             sceneManager = new SceneManager();
             sceneManager.Add(Scene.Scene.Title, new SceneFader(new Title()));
-
-            IScene addScene = new GamePlay();
-            sceneManager.Add(Scene.Scene.GamePlay, addScene);
-
-            sceneManager.Add(Scene.Scene.Ending, new Ending(addScene));
-            sceneManager.Add(Scene.Scene.GoodEnding, new GoodEnding(addScene));
+            sceneManager.Add(Scene.Scene.Field, new SceneFader(new Field()));
+            sceneManager.Add(Scene.Scene.Forest,new SceneFader(new Forest()));
+            sceneManager.Add(Scene.Scene.Cave,new SceneFader(new Cave()));
+            sceneManager.Add(Scene.Scene.Ending, new Ending());
             sceneManager.Add(Scene.Scene.Load, new LoadScene());
             sceneManager.Change(Scene.Scene.Load);
 

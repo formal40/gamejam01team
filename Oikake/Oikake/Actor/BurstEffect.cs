@@ -28,7 +28,8 @@ namespace Oikake.Actor
         /// <param name="mediator">仲介者</param>
         public BurstEffect(Vector2 position, IGameMediator mediator) : base("pipo-btleffect", mediator)
         {
-            this.position = position;
+            this.position.X = position.X - 60;
+            this.position.Y = position.Y - 60;
         }
 
         /// <summary>

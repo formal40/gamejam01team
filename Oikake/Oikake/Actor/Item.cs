@@ -63,6 +63,7 @@ namespace Oikake.Actor
         {
             mediator.AddScore(score);
             isDeadFlag = true;
+            mediator.AddActor(new BurstEffect(position, mediator));
         }
     }
 }

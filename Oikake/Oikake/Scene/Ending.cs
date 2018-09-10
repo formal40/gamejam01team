@@ -14,21 +14,17 @@ namespace Oikake.Scene
     class Ending : IScene
     {
         private bool isEndFlag;
-        IScene backGroundScene;
         private Sound sound;
 
-        public Ending(IScene scene)
+        public Ending()
         {
             isEndFlag = false;
-            backGroundScene = scene;
             var gameDevice = GameDevice.Instance();
             sound = gameDevice.GetSound();
         }
 
         public void Draw(Renderer renderer)
         {
-            backGroundScene.Draw(renderer);
-
             renderer.Begin();
             renderer.DrawTexture("ending", new Vector2(150, 150));
             renderer.End();

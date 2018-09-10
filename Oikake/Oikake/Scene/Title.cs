@@ -45,14 +45,6 @@ namespace Oikake.Scene
             isEndFlag = false;
 
             motion = new Motion();
-            /*
-            motion.Add(0, new Rectangle(64 * 0, 0, 64, 64));
-            motion.Add(1, new Rectangle(64 * 1, 0, 64, 64));
-            motion.Add(2, new Rectangle(64 * 2, 0, 64, 64));
-            motion.Add(3, new Rectangle(64 * 3, 0, 64, 64));
-            motion.Add(4, new Rectangle(64 * 4, 0, 64, 64));
-            motion.Add(5, new Rectangle(64 * 5, 0, 64, 64));
-            */
 
             for (int i = 0; i <= 5; i++)
             {
@@ -77,7 +69,7 @@ namespace Oikake.Scene
         /// <returns>次のシーン</returns>
         public Scene Next()
         {
-            return Scene.GamePlay;
+            return Scene.Field;
         }
 
         /// <summary>
