@@ -32,8 +32,8 @@ namespace Oikake.Scene
         public void Draw(Renderer renderer)
         {
             renderer.Begin();
-            renderer.DrawTexture("title", Vector2.Zero);
-            renderer.DrawTexture("puddle", new Vector2(200,370),motion.DrawingRenge());
+            renderer.DrawTexture("rogo", Vector2.Zero);
+            renderer.DrawTexture("startButton",new Vector2(240,500));
             renderer.End();
         }
 

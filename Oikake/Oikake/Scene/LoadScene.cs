@@ -43,7 +43,8 @@ namespace Oikake.Scene
                 {"title",path },
                 {"white",path },
                 {"pipo-btleffect",path },
-                {"nc47171",path }
+                {"nc47171",path },
+                {"startButton",path }
             };
 
             return data;
@@ -103,7 +104,8 @@ namespace Oikake.Scene
         {
             renderer.Begin();
 
-            renderer.DrawTexture("load", new Vector2(20, 20));
+            renderer.DrawTexture("rogo", Vector2.Zero);
+            renderer.DrawTexture("load", new Vector2(Screen.Width - 500, Screen.Height - 64));
 
             int currentCount =
                 textureLoader.CurrentCount() +
@@ -113,14 +115,15 @@ namespace Oikake.Scene
             if (totalResouceNum != 0)
             {
                 float rate = (float)currentCount / totalResouceNum;
-                renderer.DrawNumber(
-                    "number",
-                    new Vector2(20, 100),
-                    (int)(rate * 100.0f));
+
+                //renderer.DrawNumber(
+                //    "number",
+                //    new Vector2(20,100),
+                //    (int)(rate * 100.0f));
 
                 renderer.DrawTexture(
                     "fade",
-                    new Vector2(0, 500),
+                    new Vector2(0, 550),
                     null,
                     0.0f,
                     Vector2.Zero,

@@ -33,7 +33,7 @@ namespace Oikake.Actor
         /// </summary>
         public override void Initialize()
         {
-            position = new Vector2(300, 400);
+            position = new Vector2(Screen.Width/2, Screen.Height/2);
         }
 
         ///<summary>

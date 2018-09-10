@@ -45,7 +45,7 @@ namespace Oikake
             graphicsDeviceManager.PreferredBackBufferWidth = Screen.Width;
             graphicsDeviceManager.PreferredBackBufferHeight = Screen.Height;
 
-            Window.Title = "追いかけ";
+            Window.Title = "ハーベストロッコ";
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Oikake
 
             sceneManager = new SceneManager();
             sceneManager.Add(Scene.Scene.Load, new LoadScene());
-            sceneManager.Add(Scene.Scene.Title, new SceneFader(new Title()));
+            sceneManager.Add(Scene.Scene.Title, new Title());
             sceneManager.Add(Scene.Scene.Field, new SceneFader(new Field(score)));
             sceneManager.Add(Scene.Scene.Forest,new SceneFader(new Forest(score)));
             sceneManager.Add(Scene.Scene.Cave,new SceneFader(new Cave(score)));
@@ -88,6 +88,7 @@ namespace Oikake
 
             renderer.LoadContent("number");
             renderer.LoadContent("load");
+            renderer.LoadContent("rogo");
 
             Texture2D fade = new Texture2D(GraphicsDevice, 1, 1);
             Color[] colors = new Color[1 * 1];

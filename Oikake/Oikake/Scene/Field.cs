@@ -105,6 +105,10 @@ namespace Oikake.Scene
 
             gadgetManager.Update(gameTime);
 
+            if (timer.Now() == 5.0)
+            {
+                gadgetManager.Add(new Black(this));
+            }
 
             sound.PlayBGM("gameplaybgm");
 
