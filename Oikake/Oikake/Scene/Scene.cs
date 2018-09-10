@@ -13,6 +13,10 @@ namespace Oikake.Scene
         Forest,
         Cave,
         Ending,
+        EndingS,
+        EndingA,
+        EndingB,
+        EndingC,
         GoodEnding,
         Load
     }

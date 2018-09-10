@@ -45,6 +45,7 @@ namespace Oikake.Scene
 
             timer = new CountDownTimer(10);
             timerUI = new TimerUI(timer);
+            score.Initialize();
 
             //score = new Score();
         }

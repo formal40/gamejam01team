@@ -59,12 +59,16 @@ namespace Oikake
             score = new Score();
 
             sceneManager = new SceneManager();
+            sceneManager.Add(Scene.Scene.Load, new LoadScene());
             sceneManager.Add(Scene.Scene.Title, new SceneFader(new Title()));
             sceneManager.Add(Scene.Scene.Field, new SceneFader(new Field(score)));
             sceneManager.Add(Scene.Scene.Forest,new SceneFader(new Forest(score)));
             sceneManager.Add(Scene.Scene.Cave,new SceneFader(new Cave(score)));
             sceneManager.Add(Scene.Scene.Ending,new SceneFader(new Ending(score)));
-            sceneManager.Add(Scene.Scene.Load, new LoadScene());
+            sceneManager.Add(Scene.Scene.EndingS, new EndingS(score));
+            sceneManager.Add(Scene.Scene.EndingA, new EndingA(score));
+            sceneManager.Add(Scene.Scene.EndingB, new EndingB(score));
+            sceneManager.Add(Scene.Scene.EndingC, new EndingC(score));
             sceneManager.Change(Scene.Scene.Load);
 
             // この上にロジックを記述
