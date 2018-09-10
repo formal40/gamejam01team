@@ -24,11 +24,12 @@ namespace Oikake.Scene
         private bool isEndFlag;
         private Sound sound;
 
-        public Cave()
+        public Cave(Score score)
         {
             isEndFlag = false;
             var gameDevice = GameDevice.Instance();
             sound = gameDevice.GetSound();
+            this.score = score;
         }
 
         public void Initialize()
@@ -45,7 +46,7 @@ namespace Oikake.Scene
             timer = new CountDownTimer(10);
             timerUI = new TimerUI(timer);
 
-            score = new Score();
+            //score = new Score();
         }
 
         public void AddActor(Gadget character)

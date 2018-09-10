@@ -15,18 +15,21 @@ namespace Oikake.Scene
     {
         private bool isEndFlag;
         private Sound sound;
+        private Score score;
 
-        public Ending()
+        public Ending(Score score)
         {
             isEndFlag = false;
             var gameDevice = GameDevice.Instance();
             sound = gameDevice.GetSound();
+            this.score = score;
         }
 
         public void Draw(Renderer renderer)
         {
             renderer.Begin();
             renderer.DrawTexture("ending", new Vector2(150, 150));
+            score.Draw(renderer);
             renderer.End();
         }
 

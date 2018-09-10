@@ -29,6 +29,8 @@ namespace Oikake
 
         private SceneManager sceneManager;
 
+        Score score;
+
         /// <summary>
         /// コンストラクタ
         /// （new で実体生成された際、一番最初に一回呼び出される）
@@ -54,12 +56,14 @@ namespace Oikake
             // この下にロジックを記述
             gameDevice = GameDevice.Instance(Content, GraphicsDevice);
 
+            score = new Score();
+
             sceneManager = new SceneManager();
             sceneManager.Add(Scene.Scene.Title, new SceneFader(new Title()));
-            sceneManager.Add(Scene.Scene.Field, new SceneFader(new Field()));
-            sceneManager.Add(Scene.Scene.Forest,new SceneFader(new Forest()));
-            sceneManager.Add(Scene.Scene.Cave,new SceneFader(new Cave()));
-            sceneManager.Add(Scene.Scene.Ending, new Ending());
+            sceneManager.Add(Scene.Scene.Field, new SceneFader(new Field(score)));
+            sceneManager.Add(Scene.Scene.Forest,new SceneFader(new Forest(score)));
+            sceneManager.Add(Scene.Scene.Cave,new SceneFader(new Cave(score)));
+            sceneManager.Add(Scene.Scene.Ending,new SceneFader(new Ending(score)));
             sceneManager.Add(Scene.Scene.Load, new LoadScene());
             sceneManager.Change(Scene.Scene.Load);
 
@@ -118,10 +122,6 @@ namespace Oikake
             // この下に更新ロジックを記述
             gameDevice.Update(gameTime);
             sceneManager.Update(gameTime);
-
-            //Input.Update();
-
-            //sceneManager.Update(gameTime);
             
             // この上にロジックを記述
             base.Update(gameTime); // 親クラスの更新処理呼び出し。絶対に消すな！！
