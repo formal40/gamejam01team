@@ -56,13 +56,12 @@ namespace Oikake
 
             sceneManager = new SceneManager();
             sceneManager.Add(Scene.Scene.Title, new SceneFader(new Title()));
-
-            IScene addScene = new GamePlay();
-            sceneManager.Add(Scene.Scene.GamePlay, addScene);
-
-            sceneManager.Add(Scene.Scene.Ending, new Ending(addScene));
-            sceneManager.Add(Scene.Scene.GoodEnding, new GoodEnding(addScene));
-            sceneManager.Change(Scene.Scene.Title);
+            sceneManager.Add(Scene.Scene.Field, new SceneFader(new Field()));
+            sceneManager.Add(Scene.Scene.Forest,new SceneFader(new Forest()));
+            sceneManager.Add(Scene.Scene.Cave,new SceneFader(new Cave()));
+            sceneManager.Add(Scene.Scene.Ending, new Ending());
+            sceneManager.Add(Scene.Scene.Load, new LoadScene());
+            sceneManager.Change(Scene.Scene.Load);
 
             // この上にロジックを記述
             base.Initialize();// 親クラスの初期化処理呼び出し。絶対に消すな！！
@@ -78,38 +77,15 @@ namespace Oikake
             renderer = gameDevice.GetRenderer();
 
             // この下にロジックを記述
-            renderer.LoadContent("black");
-            renderer.LoadContent("ending");
+
             renderer.LoadContent("number");
-            renderer.LoadContent("score");
-            renderer.LoadContent("stage");
-            renderer.LoadContent("timer");
-            renderer.LoadContent("title");
-            renderer.LoadContent("white");
-            renderer.LoadContent("pipo-btleffect");
-            renderer.LoadContent("oikake_enemy_4anime");
-            renderer.LoadContent("oikake_player_4anime");
-            renderer.LoadContent("puddle");
-            renderer.LoadContent("nc47171");
-            renderer.LoadContent("particle");
-            renderer.LoadContent("particleBlue");
+            renderer.LoadContent("load");
 
             Texture2D fade = new Texture2D(GraphicsDevice, 1, 1);
             Color[] colors = new Color[1 * 1];
             colors[0] = new Color(0, 0, 0);
             fade.SetData(colors);
             renderer.LoadContent("fade", fade);
-
-            Sound sound = gameDevice.GetSound();
-            string filepath = "./Sound/";
-            sound.LoadBGM("titlebgm", filepath);
-            sound.LoadBGM("gameplaybgm", filepath);
-            sound.LoadBGM("endingbgm", filepath);
-            sound.LoadBGM("congratulation", filepath);
-
-            sound.LoadSE("titlese", filepath);
-            sound.LoadSE("gameplayse", filepath);
-            sound.LoadSE("endingse", filepath);
 
             // この上にロジックを記述
         }

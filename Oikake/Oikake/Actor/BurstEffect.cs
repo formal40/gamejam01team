@@ -14,7 +14,7 @@ using Oikake.Util;
 
 namespace Oikake.Actor
 {
-    class BurstEffect : Character
+    class BurstEffect : Gadget
     {
         private Timer timer;
         private int counter;
@@ -28,14 +28,15 @@ namespace Oikake.Actor
         /// <param name="mediator">仲介者</param>
         public BurstEffect(Vector2 position, IGameMediator mediator) : base("pipo-btleffect", mediator)
         {
-            this.position = position;
+            this.position.X = position.X - 60;
+            this.position.Y = position.Y - 60;
         }
 
         /// <summary>
         /// ヒット通知
         /// </summary>
         /// <param name="other"></param>
-        public override void Hit(Character other)
+        public override void Hit(Gadget other)
         {
             
         }
