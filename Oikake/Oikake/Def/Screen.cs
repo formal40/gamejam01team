@@ -10,7 +10,6 @@ namespace Oikake.Def
     {
         public static readonly int Width = 800;
         public static readonly int Height = 600;
-
-
+        
     }
 }

@@ -16,6 +16,8 @@ namespace Oikake.Scene
         private bool isEndFlag;
         IScene backGroundScene;
         private Sound sound;
+        private int number;
+        private Scene scene;
 
         public Ending(IScene scene)
         {
@@ -30,7 +32,14 @@ namespace Oikake.Scene
             backGroundScene.Drow(renderer);
 
             renderer.Begin();
-            renderer.DrawTexture("ending", new Vector2(150, 150));
+            if(number == 1)
+            {
+                renderer.DrawTexture("Carrot", new Vector2(1000, 550));
+            }
+            else if(number == 2)
+            {
+                renderer.DrawTexture("Carrot", new Vector2(1000, 650));
+            }
             renderer.End();
         }
 
@@ -67,6 +76,30 @@ namespace Oikake.Scene
             if (Input.GetKeyTrigger(Keys.Space))
             {
                 isEndFlag = true;
+            }
+
+            if(number == 1)
+            {
+                scene = Scene.Title;
+            }
+            else if(number == 2)
+            {
+                Game1.exit = true;
+            }
+
+            if (Input.IsButtonDown(Buttons.A))
+            {
+                isEndFlag = true;
+            }
+
+            if (Input.IsButtonDown(Buttons.LeftThumbstickUp))
+            {
+                number += 1;
+            }
+
+            if (Input.IsButtonDown(Buttons.LeftThumbstickDown))
+            {
+                number -= 1;
             }
         }
     }

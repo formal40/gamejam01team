@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Oikake.Scene
 {
-    enum Scene
+    enum Scene//クレジットの追加
     {
         Title,
+        Credit,
         GamePlay,
         Ending,
         GoodEnding

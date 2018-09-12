@@ -29,6 +29,8 @@ namespace Oikake
 
         private SceneManager sceneManager;
 
+        public static bool exit;
+
         /// <summary>
         /// コンストラクタ
         /// （new で実体生成された際、一番最初に一回呼び出される）
@@ -53,6 +55,7 @@ namespace Oikake
         {
             // この下にロジックを記述
             gameDevice = GameDevice.Instance(Content, GraphicsDevice);
+            exit = false;
 
             sceneManager = new SceneManager();
             sceneManager.Add(Scene.Scene.Title, new SceneFader(new Title()));
@@ -93,6 +96,9 @@ namespace Oikake
             renderer.LoadContent("nc47171");
             renderer.LoadContent("particle");
             renderer.LoadContent("particleBlue");
+            renderer.LoadContent("Carrot");
+            renderer.LoadContent("title111");
+            renderer.LoadContent("titlebg");
 
             Texture2D fade = new Texture2D(GraphicsDevice, 1, 1);
             Color[] colors = new Color[1 * 1];
@@ -128,13 +134,14 @@ namespace Oikake
         /// <summary>
         /// 更新処理
         /// （1/60秒の１フレーム分の更新内容を記述。音再生はここで行う）
+        /// || exitの追加
         /// </summary>
         /// <param name="gameTime">現在のゲーム時間を提供するオブジェクト</param>
         protected override void Update(GameTime gameTime)
         {
             // ゲーム終了処理（ゲームパッドのBackボタンかキーボードのエスケープボタンが押されたら終了）
             if ((GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) ||
-                 (Keyboard.GetState().IsKeyDown(Keys.Escape)))
+                 (Keyboard.GetState().IsKeyDown(Keys.Escape))|| exit)
             {
                 Exit();
             }
