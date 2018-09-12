@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Oikake.Actor;
+using Oikake.Actor.Item;
 using Oikake.Device;
 using Oikake.Util;
 using System;

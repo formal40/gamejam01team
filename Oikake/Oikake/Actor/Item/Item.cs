@@ -10,7 +10,7 @@ using Oikake.Def;
 using Oikake.Scene;
 using Oikake.Util;
 
-namespace Oikake.Actor
+namespace Oikake.Actor.Item
 {
     /// <summary>
     /// 作成者：近藤卓
@@ -21,13 +21,14 @@ namespace Oikake.Actor
     {
         protected int score;
         protected int speed;
+        protected Random rnd;
 
         ///<summary>
         ///コンストラクタ
         /// </summary>
         public Item(string name, IGameMediator mediator) : base(name, mediator)
         {
-
+            rnd = new Random();
         }
 
         ///<summary>

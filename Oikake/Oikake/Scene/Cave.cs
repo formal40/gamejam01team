@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Oikake.Actor;
+using Oikake.Actor.Item;
 using Oikake.Device;
 using Oikake.Util;
 using System;
@@ -104,6 +105,7 @@ namespace Oikake.Scene
 
             gadgetManager.Update(gameTime);
 
+            gadgetManager.Add(new Black(this));
 
             sound.PlayBGM("gameplaybgm");
 

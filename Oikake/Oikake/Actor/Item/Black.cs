@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Oikake.Def;
 using Oikake.Scene;
 
-namespace Oikake.Actor
+namespace Oikake.Actor.Item
 {
     /// <summary>
     /// 作成者：近藤卓
@@ -20,7 +20,7 @@ namespace Oikake.Actor
         {
             size = 64;
             position = new Vector2(Screen.Width, 300);
-            speed = -1;
+            speed = -5;
             score = 100;
         }
     }

@@ -41,7 +41,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Actor\Black.cs" />
+    <Compile Include="Actor\Item\Apple.cs" />
+    <Compile Include="Actor\Item\Black.cs" />
     <Compile Include="Actor\BurstEffect.cs" />
     <Compile Include="Actor\Gadget.cs" />
     <Compile Include="Actor\GadgetManager.cs" />
@@ -53,7 +54,17 @@
     <Compile Include="Actor\Effects\ParticleManager.cs" />
     <Compile Include="Actor\Effects\ParticleMiddle.cs" />
     <Compile Include="Actor\Effects\ParticleSmall.cs" />
-    <Compile Include="Actor\Item.cs" />
+    <Compile Include="Actor\Item\Carrot.cs" />
+    <Compile Include="Actor\Item\Chestnut.cs" />
+    <Compile Include="Actor\Item\EarRice.cs" />
+    <Compile Include="Actor\Item\Item.cs" />
+    <Compile Include="Actor\Item\JewelA.cs" />
+    <Compile Include="Actor\Item\JewelB.cs" />
+    <Compile Include="Actor\Item\Mandragora.cs" />
+    <Compile Include="Actor\Item\Mushroom.cs" />
+    <Compile Include="Actor\Item\Pumpkin.cs" />
+    <Compile Include="Actor\Item\Stone.cs" />
+    <Compile Include="Actor\Item\SweetPotato.cs" />
     <Compile Include="Actor\PlayerBullet.cs" />
     <Compile Include="Def\Screen.cs" />
     <Compile Include="Device\BGMLoader.cs" />

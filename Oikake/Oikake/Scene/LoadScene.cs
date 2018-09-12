@@ -105,7 +105,7 @@ namespace Oikake.Scene
             renderer.Begin();
 
             renderer.DrawTexture("rogo", Vector2.Zero);
-            renderer.DrawTexture("load", new Vector2(Screen.Width - 500, Screen.Height - 64));
+            renderer.DrawTexture("load", new Vector2(Screen.Width - 400, Screen.Height - 64));
 
             int currentCount =
                 textureLoader.CurrentCount() +
@@ -123,7 +123,7 @@ namespace Oikake.Scene
 
                 renderer.DrawTexture(
                     "fade",
-                    new Vector2(0, 550),
+                    new Vector2(0, 600),
                     null,
                     0.0f,
                     Vector2.Zero,
