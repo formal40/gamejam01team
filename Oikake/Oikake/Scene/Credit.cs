@@ -13,7 +13,6 @@ namespace Oikake.Scene
     class Credit : IScene
     {
         private bool isEndFlag;
-        private int number;
 
         public Credit()
         {
@@ -50,7 +49,7 @@ namespace Oikake.Scene
         {
             if (Input.IsButtonDown(Buttons.A))
             {
-                number -= 1;
+                isEndFlag = true;
             }
         }
 

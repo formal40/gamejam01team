@@ -78,11 +78,11 @@ namespace Oikake.Scene
                 isEndFlag = true;
             }
 
-            if(number == 1)
+            if(number == 2)
             {
                 scene = Scene.Title;
             }
-            else if(number == 2)
+            else if(number == 3)
             {
                 Game1.exit = true;
             }

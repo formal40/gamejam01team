@@ -8,8 +8,8 @@ namespace Oikake.Def
 {
     class Screen
     {
-        public static readonly int Width = 800;
-        public static readonly int Height = 600;
+        public static readonly int Width = 1280;
+        public static readonly int Height = 720;
         
     }
 }

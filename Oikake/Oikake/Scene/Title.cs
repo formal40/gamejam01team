@@ -20,6 +20,8 @@ namespace Oikake.Scene
         private int number;
         private Scene scene;
 
+        
+
         public Title()
         {
             isEndFlag = false;
@@ -38,15 +40,15 @@ namespace Oikake.Scene
             renderer.DrawTexture("title111", Vector2.Zero);
             if (number ==1)
             {
-                renderer.DrawTexture("Carrot", new Vector2(500, 370));
+                renderer.DrawTexture("Carrot", new Vector2(430, 400));
             }
             else if(number == 2)
             {
-                renderer.DrawTexture("Carrot", new Vector2(500, 470));
+                renderer.DrawTexture("Carrot", new Vector2(450, 500));
             }
             else if(number == 3)
             {
-                renderer.DrawTexture("Carrot", new Vector2(500, 570));
+                renderer.DrawTexture("Carrot", new Vector2(450, 600));
             }
             renderer.End();
         }
@@ -117,8 +119,6 @@ namespace Oikake.Scene
                 isEndFlag = true;
                 sound.PlaySE("titlese");
             }
-            
-            
 
             if (number == 0)
             {
@@ -145,14 +145,23 @@ namespace Oikake.Scene
                 isEndFlag = true;
             }
 
-            if(Input.IsButtonDown(Buttons.LeftThumbstickUp))
+            if(Input.IsButtonDown(Buttons.LeftThumbstickDown))//左スティックが上に行ったときnumberが増える
             {
                 number += 1;
             }
 
-            if(Input.IsButtonDown(Buttons.LeftThumbstickDown))
+            if(Input.IsButtonDown(Buttons.LeftThumbstickUp))
             {
                 number -= 1;
+            }
+
+            if(number <0)
+            {
+                number = 0;
+            }
+            else if(number>3)
+            {
+                number = 3;
             }
         }
     }

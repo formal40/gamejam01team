@@ -59,9 +59,11 @@ namespace Oikake
 
             sceneManager = new SceneManager();
             sceneManager.Add(Scene.Scene.Title, new SceneFader(new Title()));
-
+            sceneManager.Add(Scene.Scene.Credit, new SceneFader(new Credit()));
             IScene addScene = new GamePlay();
             sceneManager.Add(Scene.Scene.GamePlay, addScene);
+
+            
 
             sceneManager.Add(Scene.Scene.Ending, new Ending(addScene));
             sceneManager.Add(Scene.Scene.GoodEnding, new GoodEnding(addScene));
@@ -75,7 +77,7 @@ namespace Oikake
         /// コンテンツデータ（リソースデータ）の読み込み処理
         /// （起動時、１度だけ呼ばれる）
         /// </summary>
-        protected override void LoadContent()
+        protected override void LoadContent()//Carrot,title,titlebgの追加
         {
             //renderer = new Renderer(Content, GraphicsDevice);
             renderer = gameDevice.GetRenderer();
