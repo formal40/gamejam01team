@@ -101,6 +101,7 @@ namespace Oikake
             renderer.LoadContent("Carrot");
             renderer.LoadContent("title111");
             renderer.LoadContent("titlebg");
+            renderer.LoadContent("endS");
 
             Texture2D fade = new Texture2D(GraphicsDevice, 1, 1);
             Color[] colors = new Color[1 * 1];

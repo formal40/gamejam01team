@@ -40,7 +40,7 @@ namespace Oikake.Scene
             renderer.DrawTexture("title111", Vector2.Zero);
             if (number ==1)
             {
-                renderer.DrawTexture("Carrot", new Vector2(430, 400));
+                renderer.DrawTexture("Carrot", new Vector2(400, 400));
             }
             else if(number == 2)
             {
