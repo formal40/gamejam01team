@@ -43,7 +43,7 @@ namespace Oikake
             graphicsDeviceManager.PreferredBackBufferWidth = Screen.Width;
             graphicsDeviceManager.PreferredBackBufferHeight = Screen.Height;
 
-            Window.Title = "追いかけ";
+            Window.Title = "ハーベストロッコ";
         }
 
         /// <summary>

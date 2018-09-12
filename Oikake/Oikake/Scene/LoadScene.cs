@@ -46,7 +46,11 @@ namespace Oikake.Scene
                 {"nc47171",path },
                 {"mok",path },
                 {"mnk",path },
-                {"mme",path }
+                {"mme",path },
+                { "kari１.0", path },
+                { "kari１.1", path },
+                { "kari１.2", path },
+                {"nme",path }
 
             };
 

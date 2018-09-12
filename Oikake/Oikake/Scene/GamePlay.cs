@@ -28,9 +28,27 @@ namespace Oikake.Scene
         private Score score;
         private bool isEndFlag;
         private Sound sound;
+
+
         private BackGroundObject backGroundObjectFront;
         private BackGroundObject backGroundObjectCenter;
         private BackGroundObject backGroundObjectBack;
+
+        private string backGroundObjectFrontName;
+        private string backGroundObjectCenterName;
+        private string backGroundObjectBackName;
+
+        private OneTimeBGObject oneTimeBGObject;
+        private string oneTimeBGObjectName;
+
+
+
+        private enum Location
+        {
+            FIELD, FOREST, CAVE, NONE
+        }
+
+        private Location currentLocation;
 
         public GamePlay()
         {
@@ -50,10 +68,13 @@ namespace Oikake.Scene
 
             gadgetManager.Add(new Black(this));
 
-            timer = new CountDownTimer(365);
+            timer = new CountDownTimer(60);
             timerUI = new TimerUI(timer);
 
             score = new Score();
+
+
+            oneTimeBGObject = new OneTimeBGObject();
 
             backGroundObjectFront = new BackGroundObject();
             backGroundObjectFront.Initialize(18);
@@ -61,7 +82,39 @@ namespace Oikake.Scene
             backGroundObjectCenter.Initialize(9);
             backGroundObjectBack = new BackGroundObject();
             backGroundObjectBack.Initialize(3);
+
+            currentLocation = Location.NONE;
+            LocationChange(Location.FIELD);
+
+            
         }
+
+        private void LocationChange(Location location)
+        {
+            if (currentLocation == location) return;
+
+            currentLocation = location;
+
+            switch (currentLocation)
+            {
+                case Location.FIELD:
+                    backGroundObjectFrontName = "mme";
+                    backGroundObjectCenterName = "mnk";
+                    backGroundObjectBackName = "mok";
+                    break;
+                case Location.FOREST:
+                    backGroundObjectFrontName = "kari１.2";
+                    backGroundObjectCenterName = "kari１.1";
+                    backGroundObjectBackName = "kari１.0";
+                    break;
+                case Location.CAVE:
+                    backGroundObjectFrontName = "mme";
+                    backGroundObjectCenterName = "mnk";
+                    backGroundObjectBackName = "mok";
+                    break;
+            }
+        }
+
 
         public void AddActor(Gadget character)
         {
@@ -82,12 +135,13 @@ namespace Oikake.Scene
         {
             //描画開始
             renderer.Begin();
-
             
-            backGroundObjectBack.Dorw(renderer, "mok");
-            backGroundObjectCenter.Dorw(renderer, "mnk");
-            backGroundObjectFront.Dorw(renderer, "mme");
+            backGroundObjectBack.Dorw(renderer, backGroundObjectBackName);
+            backGroundObjectCenter.Dorw(renderer, backGroundObjectCenterName);
+            backGroundObjectFront.Dorw(renderer, backGroundObjectFrontName);
 
+            oneTimeBGObject.Dorw(renderer, oneTimeBGObjectName);
+            
             gadgetManager.Draw(renderer);
 
             timerUI.Draw(renderer);
@@ -128,6 +182,33 @@ namespace Oikake.Scene
 
 
             sound.PlayBGM("gameplaybgm");
+
+
+            //もし残り時間が21秒以下だったら
+            if (timer.Now() <= 20)
+            {
+                LocationChange(Location.CAVE);
+            }
+
+            //もし残り時間が42秒以下だったら
+            else if (timer.Now() <= 40)
+            {
+                LocationChange(Location.FOREST);
+            }
+
+            if (timer.Now() <= 21)
+            {
+                oneTimeBGObjectName = "nme";
+                oneTimeBGObject.Start();
+                oneTimeBGObject.Update();
+            }
+
+            if (timer.Now() <= 41)
+            {
+                oneTimeBGObjectName = "nme";
+                oneTimeBGObject.Initialize(20);
+                oneTimeBGObject.Update();
+            }
 
             //時間切れか？
             if (timer.IsTime())

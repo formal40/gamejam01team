@@ -67,6 +67,7 @@
     <Compile Include="Actor\Player.cs" />
     <Compile Include="GameObject\BackGroundObject.cs" />
     <Compile Include="GameObject\ItemObject.cs" />
+    <Compile Include="GameObject\OneTimeBGObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Device\Renderer.cs" />
