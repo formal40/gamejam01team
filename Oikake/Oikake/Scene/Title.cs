@@ -69,7 +69,7 @@ namespace Oikake.Scene
         /// <returns>次のシーン</returns>
         public Scene Next()
         {
-            return Scene.Field;
+            return Scene.GamePlay;
         }
 
         /// <summary>

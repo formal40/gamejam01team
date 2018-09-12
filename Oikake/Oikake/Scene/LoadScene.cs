@@ -45,6 +45,14 @@ namespace Oikake.Scene
                 {"pipo-btleffect",path },
                 {"nc47171",path },
                 {"startButton",path }
+                {"mok",path },
+                {"mnk",path },
+                {"mme",path },
+                { "kari１.0", path },
+                { "kari１.1", path },
+                { "kari１.2", path },
+                {"nme",path },
+                {"nok",path }
             };
 
             return data;

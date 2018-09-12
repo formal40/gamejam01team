@@ -59,6 +59,12 @@ namespace Oikake
             score = new Score();
 
             sceneManager = new SceneManager();
+
+            sceneManager.Add(Scene.Scene.Title, new SceneFader(new Title()));
+            sceneManager.Add(Scene.Scene.GamePlay, new GamePlay());
+            sceneManager.Add(Scene.Scene.Ending, new Ending());
+
+
             sceneManager.Add(Scene.Scene.Load, new LoadScene());
             sceneManager.Add(Scene.Scene.Title, new Title());
             sceneManager.Add(Scene.Scene.Field, new SceneFader(new Field(score)));

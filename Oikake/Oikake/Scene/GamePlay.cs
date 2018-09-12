@@ -11,6 +11,7 @@ using Oikake.Actor;
 using Oikake.Actor.Item;
 using Oikake.Device;
 using Oikake.Util;
+using Oikake.GameObject;
 
 namespace Oikake.Scene
 {
@@ -28,6 +29,29 @@ namespace Oikake.Scene
         private Score score;
         private bool isEndFlag;
         private Sound sound;
+
+
+        private BackGroundObject backGroundObjectFront;
+        private BackGroundObject backGroundObjectCenter;
+        private BackGroundObject backGroundObjectBack;
+
+        private string backGroundObjectFrontName;
+        private string backGroundObjectCenterName;
+        private string backGroundObjectBackName;
+
+        private OneTimeBGObject oneTimeBGObject;
+        private string oneTimeBGObjectName;
+
+        private bool isOneTimeBGObject;
+
+
+
+        private enum Location
+        {
+            FIELD, FOREST, CAVE, NONE
+        }
+
+        private Location currentLocation;
 
         public GamePlay()
         {
@@ -47,11 +71,57 @@ namespace Oikake.Scene
 
             gadgetManager.Add(new Black(this));
 
-            timer = new CountDownTimer(10);
+            timer = new CountDownTimer(60);
             timerUI = new TimerUI(timer);
 
             score = new Score();
+
+
+            oneTimeBGObject = new OneTimeBGObject();
+            oneTimeBGObjectName = "nok";
+            oneTimeBGObject.Initialize(35);
+
+            backGroundObjectFront = new BackGroundObject();
+            backGroundObjectFront.Initialize(20);
+            backGroundObjectCenter = new BackGroundObject();
+            backGroundObjectCenter.Initialize(10);
+            backGroundObjectBack = new BackGroundObject();
+            backGroundObjectBack.Initialize(3);
+
+            isOneTimeBGObject = false;
+
+            currentLocation = Location.NONE;
+            LocationChange(Location.FIELD);
+
+            
         }
+
+        private void LocationChange(Location location)
+        {
+            if (currentLocation == location) return;
+
+            currentLocation = location;
+
+            switch (currentLocation)
+            {
+                case Location.FIELD:
+                    backGroundObjectFrontName = "mme";
+                    backGroundObjectCenterName = "mnk";
+                    backGroundObjectBackName = "mok";
+                    break;
+                case Location.FOREST:
+                    backGroundObjectFrontName = "kari１.2";
+                    backGroundObjectCenterName = "kari１.1";
+                    backGroundObjectBackName = "kari１.0";
+                    break;
+                case Location.CAVE:
+                    backGroundObjectFrontName = "mme";
+                    backGroundObjectCenterName = "mnk";
+                    backGroundObjectBackName = "mok";
+                    break;
+            }
+        }
+
 
         public void AddActor(Gadget character)
         {
@@ -72,9 +142,13 @@ namespace Oikake.Scene
         {
             //描画開始
             renderer.Begin();
-            //背景を描画
-            renderer.DrawTexture("stage", Vector2.Zero);
+            
+            backGroundObjectBack.Dorw(renderer, backGroundObjectBackName);
+            backGroundObjectCenter.Dorw(renderer, backGroundObjectCenterName);
+            backGroundObjectFront.Dorw(renderer, backGroundObjectFrontName);
 
+            oneTimeBGObject.Dorw(renderer, oneTimeBGObjectName);
+            
             gadgetManager.Draw(renderer);
 
             timerUI.Draw(renderer);
@@ -116,12 +190,46 @@ namespace Oikake.Scene
 
             sound.PlayBGM("gameplaybgm");
 
+
+            //もし残り時間が21秒以下だったら
+            if (timer.Now() <= 20)
+            {
+                LocationChange(Location.CAVE);
+            }
+
+            //もし残り時間が42秒以下だったら
+            else if (timer.Now() <= 40)
+            {
+                LocationChange(Location.FOREST);
+            }
+
+            if (timer.Now() <= 21)
+            {
+                oneTimeBGObjectName = "nok";
+                if (!isOneTimeBGObject)
+                {
+                    oneTimeBGObject.Start();
+                    isOneTimeBGObject = true;
+                }
+                oneTimeBGObject.Update();
+            }
+
+            else if (timer.Now() <= 41)
+            {
+                oneTimeBGObjectName = "nok";
+                oneTimeBGObject.Update();
+            }
+
             //時間切れか？
             if (timer.IsTime())
             {
                 score.shutdown();
                 isEndFlag = true;　//シーン終了へ
             }
+
+            backGroundObjectFront.Update();
+            backGroundObjectCenter.Update();
+            backGroundObjectBack.Update();
         }
     }
 }
