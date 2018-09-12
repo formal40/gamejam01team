@@ -36,13 +36,13 @@ namespace Oikake.Scene
         {
             renderer.Begin();
 
-            score.CenterDraw(renderer);
+            score.CenterDraw(renderer);    
 
-            if(number == 1)
+            if (number == 0)
             {
-                renderer.DrawTexture("Carrot", new Vector2(1000, 550));
+                renderer.DrawTexture("Carrot", new Vector2(1000, 580));
             }
-            else if(number == 2)
+            else if(number == 1)
             {
                 renderer.DrawTexture("Carrot", new Vector2(1000, 650));
             }
@@ -96,13 +96,16 @@ namespace Oikake.Scene
                 isEndFlag = true;
             }
 
-            if(number == 1)
+            if(number == 0)
             {
                 scene = Scene.Title;
             }
-            else if(number == 2)
+            else if(number == 1)
             {
-                Game1.exit = true;
+                if (Input.IsButtonDown(Buttons.A))
+                {
+                    Game1.exit = true;
+                }
             }
 
             if (Input.IsButtonDown(Buttons.A))
@@ -110,14 +113,23 @@ namespace Oikake.Scene
                 isEndFlag = true;
             }
 
-            if (Input.IsButtonDown(Buttons.LeftThumbstickUp))
+            if (Input.IsButtonDown(Buttons.LeftThumbstickDown))
             {
                 number += 1;
             }
 
-            if (Input.IsButtonDown(Buttons.LeftThumbstickDown))
+            if (Input.IsButtonDown(Buttons.LeftThumbstickUp))
             {
                 number -= 1;
+            }
+
+            if (number < 0)
+            {
+                number = 0;
+            }
+            else if (number > 1)
+            {
+                number = 1;
             }
         }
     }

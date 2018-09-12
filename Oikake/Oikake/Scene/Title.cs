@@ -21,6 +21,8 @@ namespace Oikake.Scene
         private int number;
         private Scene scene;
 
+        
+
         public Title()
         {
             isEndFlag = false;
@@ -41,17 +43,17 @@ namespace Oikake.Scene
 
             renderer.DrawTexture("titlebg", Vector2.Zero);
             renderer.DrawTexture("title111", Vector2.Zero);
-            if (number ==1)
+            if (number ==0)
             {
-                renderer.DrawTexture("Carrot", new Vector2(500, 370));
+                renderer.DrawTexture("Carrot", new Vector2(400, 400));
+            }
+            else if(number == 1)
+            {
+                renderer.DrawTexture("Carrot", new Vector2(450, 500));
             }
             else if(number == 2)
             {
-                renderer.DrawTexture("Carrot", new Vector2(500, 470));
-            }
-            else if(number == 3)
-            {
-                renderer.DrawTexture("Carrot", new Vector2(500, 570));
+                renderer.DrawTexture("Carrot", new Vector2(450, 600));
             }
 
             renderer.End();
@@ -115,42 +117,46 @@ namespace Oikake.Scene
                 isEndFlag = true;
                 sound.PlaySE("titlese");
             }
-            
-            
 
             if (number == 0)
             {
-                scene = Scene.Title;
+                scene = Scene.GamePlay;
             }
             else if(number == 1)
             {
-                scene = Scene.GamePlay;
+                scene = Scene.Credit;
             }
             else if(number == 2)
             {
-                scene = Scene.Credit;
-            }
-            else if(number == 3)
-            {
-                if(Input.IsButtonDown(Buttons.A))
+                if (Input.IsButtonDown(Buttons.A))
                 {
                     Game1.exit = true;
                 }
             }
+
 
             if (Input.IsButtonDown(Buttons.A))
             {
                 isEndFlag = true;
             }
 
-            if(Input.IsButtonDown(Buttons.LeftThumbstickUp))
+            if(Input.IsButtonDown(Buttons.LeftThumbstickDown))//左スティックが上に行ったときnumberが増える
             {
                 number += 1;
             }
 
-            if(Input.IsButtonDown(Buttons.LeftThumbstickDown))
+            if(Input.IsButtonDown(Buttons.LeftThumbstickUp))
             {
                 number -= 1;
+            }
+
+            if(number <0)
+            {
+                number = 0;
+            }
+            else if(number>2)
+            {
+                number = 2;
             }
         }
     }

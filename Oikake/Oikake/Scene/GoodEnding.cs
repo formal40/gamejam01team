@@ -49,7 +49,6 @@ namespace Oikake.Scene
             renderer.Begin();
             renderer.DrawTexture("ending", new Vector2(150, 150));
             particleManager.Draw(renderer);
-            renderer.DrawTexture("nc47171", new Vector2(300, 200));　//この画像は自分で準備
             renderer.End();
         }
 

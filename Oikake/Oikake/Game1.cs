@@ -62,14 +62,16 @@ namespace Oikake
 
             sceneManager = new SceneManager();
 
-            sceneManager.Add(Scene.Scene.Title, new SceneFader(new Title()));
-            sceneManager.Add(Scene.Scene.GamePlay, new SceneFader(new GamePlay()));
-            //sceneManager.Add(Scene.Scene.Ending, new Ending());
-
-
             sceneManager.Add(Scene.Scene.Load, new LoadScene());
-            sceneManager.Add(Scene.Scene.Title, new Title());
-            sceneManager.Add(Scene.Scene.Ending,new SceneFader(new Ending(score)));
+            sceneManager.Add(Scene.Scene.Title, new SceneFader(new Title()));
+            sceneManager.Add(Scene.Scene.Credit, new SceneFader(new Credit()));
+            IScene addScene = new GamePlay();
+            sceneManager.Add(Scene.Scene.GamePlay, addScene);
+
+            
+
+            sceneManager.Add(Scene.Scene.Ending, new Ending(score));
+            sceneManager.Add(Scene.Scene.GoodEnding, new GoodEnding(addScene));
             sceneManager.Change(Scene.Scene.Load);
 
             // この上にロジックを記述
@@ -80,7 +82,7 @@ namespace Oikake
         /// コンテンツデータ（リソースデータ）の読み込み処理
         /// （起動時、１度だけ呼ばれる）
         /// </summary>
-        protected override void LoadContent()
+        protected override void LoadContent()//Carrot,title,titlebgの追加
         {
             //renderer = new Renderer(Content, GraphicsDevice);
             renderer = gameDevice.GetRenderer();
@@ -88,6 +90,7 @@ namespace Oikake
             // この下にロジックを記述
 
             renderer.LoadContent("number");
+
             renderer.LoadContent("loadNow");
             renderer.LoadContent("rogo");
 

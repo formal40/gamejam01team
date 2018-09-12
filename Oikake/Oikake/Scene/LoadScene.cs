@@ -38,12 +38,16 @@ namespace Oikake.Scene
                 {"title",path },
                 {"white",path },
                 {"startButton",path },
+                {"Carrot", path },
                 {"CabeFieldBgoBack",path },
                 {"CabeFieldbgoSenter",path },
                 {"CabeFieldBgoFlont",path },
                 { "ForestfieldbgoBack", path },
                 { "ForestFieldbgoCenter", path },
                 { "ForestFieldbgoFront", path },
+                { "FieldFieldbgoBack", path },
+                { "FieldFieldbgoCenter", path },
+                { "FieldFieldbgoFront", path },
                 {"nme",path },
                 {"nok",path },
                 {"FieldHundClose",path },
@@ -66,7 +70,8 @@ namespace Oikake.Scene
                 {"fe-doForest",path },
                 {"fe-doBracl",path },
                 {"titlebg", path },
-                {"title111", path }
+                {"title111", path },
+                {"endS", path }
             };
 
             return data;

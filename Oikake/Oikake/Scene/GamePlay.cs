@@ -109,9 +109,9 @@ namespace Oikake.Scene
             switch (currentLocation)
             {
                 case Location.FIELD:
-                    backGroundObjectFrontName = "CabeFieldBgoFlont";
-                    backGroundObjectCenterName = "CabeFieldbgoSenter";
-                    backGroundObjectBackName = "CabeFieldBgoBack";
+                    backGroundObjectFrontName =  "FieldFieldbgoFront";
+                    backGroundObjectCenterName = "FieldFieldbgoCenter";
+                    backGroundObjectBackName = "FieldFieldbgoBack";
                     gadgetManager.ItemAllDead();
                     break;
                 case Location.FOREST:
