@@ -143,7 +143,7 @@ namespace Oikake
             gameDevice.Update(gameTime);
             sceneManager.Update(gameTime);
 
-            //Input.Update();
+            Input.Update();
 
             //sceneManager.Update(gameTime);
             
