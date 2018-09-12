@@ -18,6 +18,7 @@ namespace Oikake.Actor
         public PlayerBullet(IGameMediator mediator, Vector2 position) : base("white", mediator)
         {
             this.position = position;
+            size = 64;
         }
 
         public override void Hit(Gadget other)

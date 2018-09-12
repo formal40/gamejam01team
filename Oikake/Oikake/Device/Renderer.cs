@@ -146,6 +146,32 @@ namespace Oikake.Device
                 position.X += width;
             }
         }
+
+        public void DrawNumberBig(string assetName, Vector2 position, int number, float alpha = 1.0f)
+        {
+            Debug.Assert
+                (textures.ContainsKey(assetName),
+                "描画時にアセット名の指定を間違えたか、" + "画像の読み込み自体ができていません");
+
+            if (number < 0)
+            {
+                number = 0;
+            }
+
+            int width = 50;
+
+            foreach (var n in number.ToString())
+            {
+                spriteBatch.Draw(
+                    textures[assetName],
+                    position,
+                    new Rectangle((n - '0') * width, 0, width, 100),
+                    Color.White * alpha);
+
+                position.X += width;
+            }
+        }
+
         /// <summary>
         /// 数字の描画（実数、小数点以下は2桁表示）
         /// </summary>

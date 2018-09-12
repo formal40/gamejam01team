@@ -44,7 +44,15 @@ namespace Oikake.Scene
                 {"white",path },
                 {"pipo-btleffect",path },
                 {"nc47171",path },
-                {"startButton",path }
+                {"NumberSmall",path },
+                {"NumberBig",path },
+                {"startButton",path },
+                {"endA",path },
+                {"endB",path },
+                {"endC",path },
+                {"endS",path },
+                {"FieldScore",path },
+                {"FieldGoal",path }
             };
 
             return data;

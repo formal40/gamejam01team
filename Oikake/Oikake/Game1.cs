@@ -64,7 +64,7 @@ namespace Oikake
             sceneManager.Add(Scene.Scene.Field, new SceneFader(new Field(score)));
             sceneManager.Add(Scene.Scene.Forest,new SceneFader(new Forest(score)));
             sceneManager.Add(Scene.Scene.Cave,new SceneFader(new Cave(score)));
-            sceneManager.Add(Scene.Scene.Ending,new SceneFader(new Ending(score)));
+            sceneManager.Add(Scene.Scene.Ending,new Ending(score));
             sceneManager.Add(Scene.Scene.EndingS, new EndingS(score));
             sceneManager.Add(Scene.Scene.EndingA, new EndingA(score));
             sceneManager.Add(Scene.Scene.EndingB, new EndingB(score));

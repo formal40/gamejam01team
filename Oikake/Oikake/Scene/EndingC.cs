@@ -31,8 +31,7 @@ namespace Oikake.Scene
         public void Draw(Renderer renderer)
         {
             renderer.Begin();
-            renderer.DrawTexture("ending", new Vector2(150, 150));
-            score.Draw(renderer);
+            renderer.DrawTexture("endC", Vector2.Zero);
             renderer.End();
         }
 

@@ -19,7 +19,7 @@ namespace Oikake.Actor.Item
         public Black(IGameMediator mediator) : base("black", mediator)
         {
             size = 64;
-            position = new Vector2(Screen.Width, 300);
+            position = new Vector2(Screen.Width, rnd.Next(Screen.Height - size));
             speed = -5;
             score = 100;
         }

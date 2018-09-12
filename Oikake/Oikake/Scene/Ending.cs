@@ -17,20 +17,19 @@ namespace Oikake.Scene
         private bool isEndFlag;
         private Sound sound;
         private Score score;
-        private CountDownTimer scorePrintTimer;
 
         public Ending(Score score)
         {
             isEndFlag = false;
             var gameDevice = GameDevice.Instance();
             sound = gameDevice.GetSound();
-            scorePrintTimer = new CountDownTimer(3);//スコア表示時間
             this.score = score;
         }
 
         public void Draw(Renderer renderer)
         {
             renderer.Begin();
+            renderer.DrawTexture("FieldScore",Vector2.Zero);
             score.CenterDraw(renderer);
             renderer.End();
         }
@@ -38,7 +37,6 @@ namespace Oikake.Scene
         public void Initialize()
         {
             isEndFlag = false;
-            scorePrintTimer.Initialize();
         }
 
         public bool IsEnd()
@@ -49,15 +47,15 @@ namespace Oikake.Scene
         public Scene Next()
         {
             //スコアで分岐
-            if(score.GetScore() >= 300)
+            if (score.GetScore() >= 300)
             {
                 return Scene.EndingS;
             }
-            else if(score.GetScore() >= 200)
+            else if (score.GetScore() >= 200)
             {
                 return Scene.EndingA;
             }
-            else if(score.GetScore() >= 100)
+            else if (score.GetScore() >= 100)
             {
                 return Scene.EndingB;
             }
@@ -75,9 +73,8 @@ namespace Oikake.Scene
         public void Update(GameTime gameTime)
         {
             sound.PlayBGM("endingbgm");
-            scorePrintTimer.Update(gameTime);
 
-            if (scorePrintTimer.IsTime())
+            if (Input.GetKeyTrigger(Keys.Space))
             {
                 isEndFlag = true;
             }
