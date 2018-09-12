@@ -52,7 +52,7 @@ namespace Oikake.Scene
         {
             renderer.DrawTexture("score", new Vector2(50, 9));
 
-            renderer.DrawNumber("NumberSmall",new Vector2(250,10),score);
+            renderer.DrawNumber("number",new Vector2(250,10),score);
         }
 
         /// <summary>
