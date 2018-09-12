@@ -18,6 +18,8 @@ namespace Oikake.Scene
         private bool isEndFlag;
         private Sound sound;
         private Motion motion;
+        private int number;
+        private Scene scene;
 
         public Title()
         {
@@ -33,8 +35,25 @@ namespace Oikake.Scene
         public void Draw(Renderer renderer)
         {
             renderer.Begin();
+
             renderer.DrawTexture("rogo", Vector2.Zero);
             renderer.DrawTexture("startButton",new Vector2(240,500));
+
+            renderer.DrawTexture("titlebg", Vector2.Zero);
+            renderer.DrawTexture("title111", Vector2.Zero);
+            if (number ==1)
+            {
+                renderer.DrawTexture("Carrot", new Vector2(500, 370));
+            }
+            else if(number == 2)
+            {
+                renderer.DrawTexture("Carrot", new Vector2(500, 470));
+            }
+            else if(number == 3)
+            {
+                renderer.DrawTexture("Carrot", new Vector2(500, 570));
+            }
+
             renderer.End();
         }
 
@@ -70,7 +89,7 @@ namespace Oikake.Scene
         /// <returns>次のシーン</returns>
         public Scene Next()
         {
-            return Scene.GamePlay;
+            return scene;            
         }
 
         /// <summary>
@@ -83,6 +102,7 @@ namespace Oikake.Scene
 
         /// <summary>
         /// 更新
+        /// タイトルのGamePlay,Credit,exitの選択。選択した画面への移行。
         /// </summary>
         /// <param name="gameTime">ゲーム時間</param>
         public void Update(GameTime gameTime)
@@ -94,6 +114,43 @@ namespace Oikake.Scene
             {
                 isEndFlag = true;
                 sound.PlaySE("titlese");
+            }
+            
+            
+
+            if (number == 0)
+            {
+                scene = Scene.Title;
+            }
+            else if(number == 1)
+            {
+                scene = Scene.GamePlay;
+            }
+            else if(number == 2)
+            {
+                scene = Scene.Credit;
+            }
+            else if(number == 3)
+            {
+                if(Input.IsButtonDown(Buttons.A))
+                {
+                    Game1.exit = true;
+                }
+            }
+
+            if (Input.IsButtonDown(Buttons.A))
+            {
+                isEndFlag = true;
+            }
+
+            if(Input.IsButtonDown(Buttons.LeftThumbstickUp))
+            {
+                number += 1;
+            }
+
+            if(Input.IsButtonDown(Buttons.LeftThumbstickDown))
+            {
+                number -= 1;
             }
         }
     }

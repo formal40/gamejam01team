@@ -16,8 +16,12 @@ namespace Oikake.Scene
     {
         private bool isEndFlag;
         private Sound sound;
+
         private Score score;
         private CountDownTimer scorePrintTimer;
+
+        private int number;
+        private Scene scene;
 
         public Ending(Score score)
         {
@@ -31,7 +35,17 @@ namespace Oikake.Scene
         public void Draw(Renderer renderer)
         {
             renderer.Begin();
+
             score.CenterDraw(renderer);
+
+            if(number == 1)
+            {
+                renderer.DrawTexture("Carrot", new Vector2(1000, 550));
+            }
+            else if(number == 2)
+            {
+                renderer.DrawTexture("Carrot", new Vector2(1000, 650));
+            }
             renderer.End();
         }
 
@@ -80,6 +94,30 @@ namespace Oikake.Scene
             if (scorePrintTimer.IsTime())
             {
                 isEndFlag = true;
+            }
+
+            if(number == 1)
+            {
+                scene = Scene.Title;
+            }
+            else if(number == 2)
+            {
+                Game1.exit = true;
+            }
+
+            if (Input.IsButtonDown(Buttons.A))
+            {
+                isEndFlag = true;
+            }
+
+            if (Input.IsButtonDown(Buttons.LeftThumbstickUp))
+            {
+                number += 1;
+            }
+
+            if (Input.IsButtonDown(Buttons.LeftThumbstickDown))
+            {
+                number -= 1;
             }
         }
     }

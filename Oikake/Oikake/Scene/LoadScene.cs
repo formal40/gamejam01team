@@ -65,6 +65,8 @@ namespace Oikake.Scene
                 {"FieldForestChestnut",path },
                 {"fe-doForest",path },
                 {"fe-doBracl",path },
+                {"titlebg", path },
+                {"title111", path }
             };
 
             return data;

@@ -29,7 +29,8 @@ namespace Oikake
 
         private SceneManager sceneManager;
 
-        Score score;
+        private Score score;
+        public static bool exit;
 
         /// <summary>
         /// コンストラクタ
@@ -55,6 +56,7 @@ namespace Oikake
         {
             // この下にロジックを記述
             gameDevice = GameDevice.Instance(Content, GraphicsDevice);
+            exit = false;
 
             score = new Score();
 
@@ -112,13 +114,14 @@ namespace Oikake
         /// <summary>
         /// 更新処理
         /// （1/60秒の１フレーム分の更新内容を記述。音再生はここで行う）
+        /// || exitの追加
         /// </summary>
         /// <param name="gameTime">現在のゲーム時間を提供するオブジェクト</param>
         protected override void Update(GameTime gameTime)
         {
             // ゲーム終了処理（ゲームパッドのBackボタンかキーボードのエスケープボタンが押されたら終了）
             if ((GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) ||
-                 (Keyboard.GetState().IsKeyDown(Keys.Escape)))
+                 (Keyboard.GetState().IsKeyDown(Keys.Escape))|| exit)
             {
                 Exit();
             }
