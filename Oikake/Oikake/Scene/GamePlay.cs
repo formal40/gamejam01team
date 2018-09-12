@@ -41,6 +41,8 @@ namespace Oikake.Scene
         private OneTimeBGObject oneTimeBGObject;
         private string oneTimeBGObjectName;
 
+        private bool isOneTimeBGObject;
+
 
 
         private enum Location
@@ -75,13 +77,17 @@ namespace Oikake.Scene
 
 
             oneTimeBGObject = new OneTimeBGObject();
+            oneTimeBGObjectName = "nok";
+            oneTimeBGObject.Initialize(35);
 
             backGroundObjectFront = new BackGroundObject();
-            backGroundObjectFront.Initialize(18);
+            backGroundObjectFront.Initialize(20);
             backGroundObjectCenter = new BackGroundObject();
-            backGroundObjectCenter.Initialize(9);
+            backGroundObjectCenter.Initialize(10);
             backGroundObjectBack = new BackGroundObject();
             backGroundObjectBack.Initialize(3);
+
+            isOneTimeBGObject = false;
 
             currentLocation = Location.NONE;
             LocationChange(Location.FIELD);
@@ -198,15 +204,18 @@ namespace Oikake.Scene
 
             if (timer.Now() <= 21)
             {
-                oneTimeBGObjectName = "nme";
-                oneTimeBGObject.Start();
+                oneTimeBGObjectName = "nok";
+                if (!isOneTimeBGObject)
+                {
+                    oneTimeBGObject.Start();
+                    isOneTimeBGObject = true;
+                }
                 oneTimeBGObject.Update();
             }
 
-            if (timer.Now() <= 41)
+            else if (timer.Now() <= 41)
             {
-                oneTimeBGObjectName = "nme";
-                oneTimeBGObject.Initialize(20);
+                oneTimeBGObjectName = "nok";
                 oneTimeBGObject.Update();
             }
 

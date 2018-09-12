@@ -35,7 +35,7 @@ namespace Oikake.GameObject
 
         public void ResetPosition()
         {
-            position = new Vector2(0.0f + Screen.Width, position.Y);
+            position = new Vector2(0.0f + Screen.Width, 0.0f);
         }
 
         public void Start()
@@ -51,7 +51,7 @@ namespace Oikake.GameObject
                 position -= velocity * speed;
             }
 
-            if(position.X < -Screen.Width)
+            if(position.X < -Screen.Width * 2)
             {
                 isEnd = true;
                 ResetPosition();
