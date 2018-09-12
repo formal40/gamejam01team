@@ -61,20 +61,13 @@ namespace Oikake
             sceneManager = new SceneManager();
 
             sceneManager.Add(Scene.Scene.Title, new SceneFader(new Title()));
-            sceneManager.Add(Scene.Scene.GamePlay, new GamePlay());
-            sceneManager.Add(Scene.Scene.Ending, new Ending());
+            sceneManager.Add(Scene.Scene.GamePlay, new SceneFader(new GamePlay()));
+            //sceneManager.Add(Scene.Scene.Ending, new Ending());
 
 
             sceneManager.Add(Scene.Scene.Load, new LoadScene());
             sceneManager.Add(Scene.Scene.Title, new Title());
-            sceneManager.Add(Scene.Scene.Field, new SceneFader(new Field(score)));
-            sceneManager.Add(Scene.Scene.Forest,new SceneFader(new Forest(score)));
-            sceneManager.Add(Scene.Scene.Cave,new SceneFader(new Cave(score)));
             sceneManager.Add(Scene.Scene.Ending,new SceneFader(new Ending(score)));
-            sceneManager.Add(Scene.Scene.EndingS, new EndingS(score));
-            sceneManager.Add(Scene.Scene.EndingA, new EndingA(score));
-            sceneManager.Add(Scene.Scene.EndingB, new EndingB(score));
-            sceneManager.Add(Scene.Scene.EndingC, new EndingC(score));
             sceneManager.Change(Scene.Scene.Load);
 
             // この上にロジックを記述
@@ -93,12 +86,12 @@ namespace Oikake
             // この下にロジックを記述
 
             renderer.LoadContent("number");
-            renderer.LoadContent("load");
+            renderer.LoadContent("loadNow");
             renderer.LoadContent("rogo");
 
             Texture2D fade = new Texture2D(GraphicsDevice, 1, 1);
             Color[] colors = new Color[1 * 1];
-            colors[0] = new Color(0, 0, 0);
+            colors[0] = new Color(255, 255, 255);
             fade.SetData(colors);
             renderer.LoadContent("fade", fade);
 

@@ -32,27 +32,39 @@ namespace Oikake.Scene
             {
                 {"black",path },
                 {"ending",path },
-                {"oikake_enemy_4anime",path },
-                {"oikake_player_4anime",path },
-                {"particle",path },
-                {"particleBlue",path },
-                {"puddle",path },
                 {"score",path },
                 {"stage",path },
                 {"timer",path },
                 {"title",path },
                 {"white",path },
-                {"pipo-btleffect",path },
-                {"nc47171",path },
-                {"startButton",path }
-                {"mok",path },
-                {"mnk",path },
-                {"mme",path },
-                { "kari１.0", path },
-                { "kari１.1", path },
-                { "kari１.2", path },
+                {"startButton",path },
+                {"CabeFieldBgoBack",path },
+                {"CabeFieldbgoSenter",path },
+                {"CabeFieldBgoFlont",path },
+                { "ForestfieldbgoBack", path },
+                { "ForestFieldbgoCenter", path },
+                { "ForestFieldbgoFront", path },
                 {"nme",path },
-                {"nok",path }
+                {"nok",path },
+                {"FieldHundClose",path },
+                {"FieldHundOpen",path },
+                {"FieldFieldSweet potato",path },
+                {"FieldFieldCarrot",path },
+                {"FieldFieldEaRice",path },
+                {"FieldForestMushroom",path },
+                {"FieldCabeStone",path },
+                {"FieldForestApple",path },
+                {"FieldFieldPumpukin",path },
+                {"FieldTruck4",path },
+                {"FieldTruck3",path },
+                {"FieldTruck2",path },
+                {"FieldTruck1",path },
+                {"FieldForestMandora",path },
+                {"FieldCaveHousekiA",path },
+                {"FieldCaveHousekiB",path },
+                {"FieldForestChestnut",path },
+                {"fe-doForest",path },
+                {"fe-doBracl",path },
             };
 
             return data;
@@ -69,7 +81,7 @@ namespace Oikake.Scene
             string[,] data = new string[,]
             {
                 {"endingbgm",path },
-                {"gameplaybgm",path },
+                {"FieldandForestBGM",path },
                 {"titlebgm",path },
             };
 
@@ -87,7 +99,7 @@ namespace Oikake.Scene
             string[,] data = new string[,]
             {
                 {"endingse",path },
-                {"gameplayse",path },
+                {"HandSE",path },
                 {"titlese",path },
             };
 
@@ -113,7 +125,7 @@ namespace Oikake.Scene
             renderer.Begin();
 
             renderer.DrawTexture("rogo", Vector2.Zero);
-            renderer.DrawTexture("load", new Vector2(Screen.Width - 400, Screen.Height - 64));
+            renderer.DrawTexture("loadNow", new Vector2(Screen.Width - 600, Screen.Height - 64));
 
             int currentCount =
                 textureLoader.CurrentCount() +

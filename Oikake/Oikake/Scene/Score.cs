@@ -50,9 +50,9 @@ namespace Oikake.Scene
 
         public void Draw(Renderer renderer)
         {
-            renderer.DrawTexture("score", new Vector2(50, 9));
+            renderer.DrawTexture("score", new Vector2(50, 650));
 
-            renderer.DrawNumber("number",new Vector2(250,10),score);
+            renderer.DrawNumber("number",new Vector2(250,651),score);
         }
 
         /// <summary>

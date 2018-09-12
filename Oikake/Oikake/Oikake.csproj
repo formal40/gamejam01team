@@ -83,12 +83,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Device\Renderer.cs" />
     <Compile Include="Scene\Ending.cs" />
-    <Compile Include="Scene\EndingA.cs" />
-    <Compile Include="Scene\EndingB.cs" />
-    <Compile Include="Scene\EndingC.cs" />
-    <Compile Include="Scene\EndingS.cs" />
-    <Compile Include="Scene\Field.cs" />
-    <Compile Include="Scene\Forest.cs" />
     <Compile Include="Scene\GamePlay.cs" />
     <Compile Include="Scene\GoodEnding.cs" />
     <Compile Include="Scene\IScene.cs" />

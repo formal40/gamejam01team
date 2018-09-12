@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Microsoft.Xna.Framework;
+using Oikake.Actor.Items;
 
 using Oikake.Device;
 
@@ -189,6 +190,19 @@ namespace Oikake.Actor
             {
                 e.Draw(renderer);
             }
+        }
+
+        public void ItemAllDead()
+        {
+            items.Clear();
+
+            List<Gadget> temp = new List<Gadget>();
+            addNewGadgets.RemoveAll(a => IsItem(a));
+        }
+
+        private bool IsItem(Gadget other)
+        {
+            return other is Item;
         }
     }
 }

@@ -10,7 +10,7 @@ using Oikake.Def;
 using Oikake.Scene;
 using Oikake.Util;
 
-namespace Oikake.Actor.Item
+namespace Oikake.Actor.Items
 {
     /// <summary>
     /// 作成者：近藤卓
@@ -22,12 +22,15 @@ namespace Oikake.Actor.Item
         protected int score;
         protected int speed;
         protected Random rnd;
+        protected Sound sound;
 
         ///<summary>
         ///コンストラクタ
         /// </summary>
         public Item(string name, IGameMediator mediator) : base(name, mediator)
         {
+            var gameDevice = GameDevice.Instance();
+            sound = gameDevice.GetSound();
             rnd = new Random();
         }
 
@@ -64,7 +67,8 @@ namespace Oikake.Actor.Item
         {
             mediator.AddScore(score);
             isDeadFlag = true;
-            mediator.AddActor(new BurstEffect(position, mediator));
+            sound.PlaySE("HandSE");
+            //mediator.AddActor(new BurstEffect(position, mediator));
         }
     }
 }

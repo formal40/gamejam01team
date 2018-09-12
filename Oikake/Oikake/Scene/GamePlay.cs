@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 using Oikake.Actor;
-using Oikake.Actor.Item;
+using Oikake.Actor.Items;
 using Oikake.Device;
 using Oikake.Util;
 using Oikake.GameObject;
@@ -43,6 +43,8 @@ namespace Oikake.Scene
         private string oneTimeBGObjectName;
 
         private bool isOneTimeBGObject;
+
+        private CountDownTimer countDownTimer;
 
 
 
@@ -93,6 +95,8 @@ namespace Oikake.Scene
             currentLocation = Location.NONE;
             LocationChange(Location.FIELD);
 
+            countDownTimer = new CountDownTimer(1);
+
             
         }
 
@@ -105,19 +109,22 @@ namespace Oikake.Scene
             switch (currentLocation)
             {
                 case Location.FIELD:
-                    backGroundObjectFrontName = "mme";
-                    backGroundObjectCenterName = "mnk";
-                    backGroundObjectBackName = "mok";
+                    backGroundObjectFrontName = "CabeFieldBgoFlont";
+                    backGroundObjectCenterName = "CabeFieldbgoSenter";
+                    backGroundObjectBackName = "CabeFieldBgoBack";
+                    gadgetManager.ItemAllDead();
                     break;
                 case Location.FOREST:
-                    backGroundObjectFrontName = "kari１.2";
-                    backGroundObjectCenterName = "kari１.1";
-                    backGroundObjectBackName = "kari１.0";
+                    backGroundObjectFrontName = "ForestFieldbgoFront";
+                    backGroundObjectCenterName = "ForestFieldbgoCenter";
+                    backGroundObjectBackName = "ForestfieldbgoBack";
+                    gadgetManager.ItemAllDead();
                     break;
                 case Location.CAVE:
-                    backGroundObjectFrontName = "mme";
-                    backGroundObjectCenterName = "mnk";
-                    backGroundObjectBackName = "mok";
+                    backGroundObjectFrontName = "CabeFieldBgoFlont";
+                    backGroundObjectCenterName = "CabeFieldbgoSenter";
+                    backGroundObjectBackName = "CabeFieldBgoBack";
+                    gadgetManager.ItemAllDead();
                     break;
             }
         }
@@ -146,12 +153,12 @@ namespace Oikake.Scene
             backGroundObjectBack.Dorw(renderer, backGroundObjectBackName);
             backGroundObjectCenter.Dorw(renderer, backGroundObjectCenterName);
             backGroundObjectFront.Dorw(renderer, backGroundObjectFrontName);
-
-            oneTimeBGObject.Dorw(renderer, oneTimeBGObjectName);
-            
+        
             gadgetManager.Draw(renderer);
 
-            timerUI.Draw(renderer);
+            oneTimeBGObject.Dorw(renderer, oneTimeBGObjectName);
+
+            //timerUI.Draw(renderer);
             score.Draw(renderer);
 
             //描画終了
@@ -187,8 +194,16 @@ namespace Oikake.Scene
 
             gadgetManager.Update(gameTime);
 
+            countDownTimer.Update(gameTime);
 
-            sound.PlayBGM("gameplaybgm");
+            if (countDownTimer.IsTime())
+            {
+                CreateItem();
+                countDownTimer.Initialize();
+            }
+
+
+            sound.PlayBGM("FieldandForestBGM");
 
 
             //もし残り時間が21秒以下だったら
@@ -205,7 +220,7 @@ namespace Oikake.Scene
 
             if (timer.Now() <= 21)
             {
-                oneTimeBGObjectName = "nok";
+                oneTimeBGObjectName = "fe-doBracl";
                 if (!isOneTimeBGObject)
                 {
                     oneTimeBGObject.Start();
@@ -216,7 +231,7 @@ namespace Oikake.Scene
 
             else if (timer.Now() <= 41)
             {
-                oneTimeBGObjectName = "nok";
+                oneTimeBGObjectName = "fe-doForest";
                 oneTimeBGObject.Update();
             }
 
@@ -230,6 +245,38 @@ namespace Oikake.Scene
             backGroundObjectFront.Update();
             backGroundObjectCenter.Update();
             backGroundObjectBack.Update();
+
+            
         }
+
+        private void CreateItem()
+        {
+            Random random = new Random();
+            int rnd = random.Next(0, 4);
+
+            int rnd2 = random.Next(0, 19);
+
+            switch (currentLocation)
+            {
+                case Location.FIELD:
+                    if (rnd == 0) gadgetManager.Add(new SweetPotato("FieldFieldSweet potato", this));
+                    if (rnd == 1) gadgetManager.Add(new Pumpkin("FieldFieldPumpukin", this));
+                    if (rnd == 2) gadgetManager.Add(new EarRice("FieldFieldEaRice", this));
+                    if (rnd == 3) gadgetManager.Add(new Carrot("FieldFieldCarrot", this));
+                    break;
+                case Location.FOREST:
+                    if (rnd == 0) gadgetManager.Add(new Chestnut("FieldForestChestnut", this));
+                    if (rnd == 1) gadgetManager.Add(new Apple("FieldForestApple", this));
+                    if (rnd == 2) gadgetManager.Add(new Mandragora("FieldForestMandora", this));
+                    if (rnd == 3) gadgetManager.Add(new Mushroom("FieldForestMushroom", this));
+                    break;
+                case Location.CAVE:
+                    if (rnd2 == 0) gadgetManager.Add(new JewelA("FieldCaveHousekiA", this));
+                    else if (rnd2 == 1) gadgetManager.Add(new JewelB("FieldCaveHousekiB", this));
+                    else  gadgetManager.Add(new Stone("FieldCabeStone", this));
+                    break;
+            }
+        }
+
     }
 }

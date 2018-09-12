@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Oikake.Def;
 using Oikake.Scene;
 
-namespace Oikake.Actor.Item
+namespace Oikake.Actor.Items
 {
     /// <summary>
     /// 宝石B

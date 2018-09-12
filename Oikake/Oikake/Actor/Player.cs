@@ -23,7 +23,7 @@ namespace Oikake.Actor
         ///<summary>
         ///コンストラクタ
         /// </summary>
-        public Player(IGameMediator mediator) : base("white", mediator)
+        public Player(IGameMediator mediator) : base("FieldHundOpen", mediator)
         {
             size = 64;
         }
@@ -44,16 +44,17 @@ namespace Oikake.Actor
         {
             Vector2 velocity = Input.Velocity();
 
-            float speed = 5.0f;
+            float speed = 10.0f;
             position = position + Input.Velocity() * speed;
 
             var min = Vector2.Zero;
             var max = new Vector2(Screen.Width - size, Screen.Height - size);
             position = Vector2.Clamp(position, min, max);
 
-            if (Input.GetKeyTrigger(Keys.Z))
+            if (Input.GetKeyTrigger(Keys.Z) || Input.GetButtonDown(Buttons.A))
             {
                 mediator.AddActor(new PlayerBullet(mediator, position));
+
             }
         }
 
