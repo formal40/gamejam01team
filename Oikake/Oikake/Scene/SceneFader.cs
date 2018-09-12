@@ -44,7 +44,7 @@ namespace Oikake.Scene
         /// コンストラクタ
         /// </summary>
         /// <param name="renderer">シーン名</param>
-        public void Drow(Renderer renderer)
+        public void Draw(Renderer renderer)
         {
             switch(state)
             {
@@ -142,7 +142,7 @@ namespace Oikake.Scene
         /// <param name="renderer"></param>
         private void DrawFadeIn(Renderer renderer)
         {
-            scene.Drow(renderer);
+            scene.Draw(renderer);
             DrawEffect(renderer, 1 - timer.Rate());
         }
 
@@ -171,7 +171,7 @@ namespace Oikake.Scene
         /// <param name="renderer"></param>
         private void DrawFadeOut(Renderer renderer)
         {
-            scene.Drow(renderer);
+            scene.Draw(renderer);
             DrawEffect(renderer, timer.Rate());
         }
 
@@ -191,7 +191,7 @@ namespace Oikake.Scene
 
         private void DrawFadeNone(Renderer renderer)
         {
-            scene.Drow(renderer);
+            scene.Draw(renderer);
         }
 
         /// <summary>

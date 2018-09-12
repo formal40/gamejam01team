@@ -3,25 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Microsoft.Xna.Framework;
-using Oikake.Def;
 using Oikake.Scene;
-using Oikake.Util;
 
 namespace Oikake.Actor
 {
-    class PlayerBullet : Character
+    /// <summary>
+    /// 作成者：近藤卓
+    /// 作成日：2018/09/09
+    /// 概要　：プレイヤー（照準）とアイテムとの当たり判定用（表示はしない）
+    /// </summary>
+    class PlayerBullet : Gadget
     {
-        private Vector2 velocity;
-        public PlayerBullet(Vector2 position, IGameMediator mediator, Vector2 velocity) : base("white", mediator)
+        public PlayerBullet(IGameMediator mediator, Vector2 position) : base("white", mediator)
         {
             this.position = position;
-            this.velocity = velocity;
         }
-        public override void Hit(Character other)
+
+        public override void Hit(Gadget other)
         {
-            isDeadFlag = true;
+            
         }
 
         public override void Initialize()
@@ -36,18 +37,8 @@ namespace Oikake.Actor
 
         public override void Update(GameTime gameTime)
         {
-            position += velocity * 20;
-
-            Range range = new Range(0, Screen.Width);
-            if(range.IsOutOfRange((int)position.X))
-            {
-                isDeadFlag = true;
-            }
-            range = new Range(0, Screen.Height);
-            if(range.IsOutOfRange((int)position.Y))
-            {
-                isDeadFlag = true;
-            }
+            //生成されたらすぐ消える
+            isDeadFlag = true;
         }
     }
 }

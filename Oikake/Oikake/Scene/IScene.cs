@@ -17,7 +17,7 @@ namespace Oikake.Scene
     {
         void Initialize();
         void Update(GameTime gameTime);
-        void Drow(Renderer renderer);
+        void Draw(Renderer renderer);
         void Shutdown();
 
         bool IsEnd();

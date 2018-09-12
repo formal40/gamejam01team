@@ -40,11 +40,11 @@ namespace Oikake.Scene
         /// 描画
         /// </summary>
         /// <param name="renderer"></param>
-        public void Drow(Renderer renderer)
+        public void Draw(Renderer renderer)
         {
             // シーンごとにrenderer.Begin()～End()を書いているのに注意
             // 背景となるゲームプレイシーン
-            backGroundScene.Drow(renderer);
+            backGroundScene.Draw(renderer);
 
             renderer.Begin();
             renderer.DrawTexture("ending", new Vector2(150, 150));

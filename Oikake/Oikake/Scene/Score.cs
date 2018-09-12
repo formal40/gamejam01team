@@ -55,6 +55,17 @@ namespace Oikake.Scene
             renderer.DrawNumber("number",new Vector2(250,10),score);
         }
 
+        /// <summary>
+        /// 画面の中央にスコアを表示
+        /// </summary>
+        /// <param name="renderer"></param>
+        public void CenterDraw(Renderer renderer)
+        {
+            renderer.DrawTexture("score", new Vector2(Screen.Width/2 - 128, Screen.Height/3));
+
+            renderer.DrawNumber("number", new Vector2(Screen.Width/2-64, Screen.Height/2), score);
+        }
+
         public void shutdown()
         {
             score += poolScore;

@@ -1,26 +1,22 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Oikake.Actor;
+using Oikake.Actor.Item;
+using Oikake.Device;
+using Oikake.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-
-using Oikake.Actor;
-using Oikake.Actor.Item;
-using Oikake.Device;
-using Oikake.Util;
-
 namespace Oikake.Scene
 {
-    interface IGameMediator
-    {
-        void AddActor(Gadget character);
-        void AddScore();
-        void AddScore(int num);
-    }
-    class GamePlay : IScene, IGameMediator
+    /// <summary>
+    /// 作成者：近藤卓
+    /// 作成日：2018/09/10
+    /// 概要　：ゲーム本編の森クラス
+    /// </summary>
+    class Forest :IScene,IGameMediator
     {
         private GadgetManager gadgetManager;
         private Timer timer;
@@ -29,11 +25,12 @@ namespace Oikake.Scene
         private bool isEndFlag;
         private Sound sound;
 
-        public GamePlay()
+        public Forest(Score score)
         {
             isEndFlag = false;
             var gameDevice = GameDevice.Instance();
             sound = gameDevice.GetSound();
+            this.score = score;
         }
 
         public void Initialize()
@@ -50,7 +47,7 @@ namespace Oikake.Scene
             timer = new CountDownTimer(10);
             timerUI = new TimerUI(timer);
 
-            score = new Score();
+            //score = new Score();
         }
 
         public void AddActor(Gadget character)
@@ -84,7 +81,7 @@ namespace Oikake.Scene
             renderer.End();
         }
 
-        
+
 
         public bool IsEnd()
         {
@@ -93,12 +90,7 @@ namespace Oikake.Scene
 
         public Scene Next()
         {
-            Scene nextScene = Scene.Ending;
-            if (score.GetScore() >= 1000)
-            {
-                nextScene = Scene.GoodEnding;
-            }
-            return nextScene;
+            return Scene.Cave;
         }
 
         public void Shutdown()

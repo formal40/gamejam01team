@@ -1,44 +1,44 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using Oikake.Device;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-
-using Oikake.Device;
-using Oikake.Util;
-
 namespace Oikake.Scene
 {
-    class Ending : IScene
+    /// <summary>
+    /// 作成者：近藤卓
+    /// 作成日：2018/09/10
+    /// 概要　：ランクCのエンディング
+    /// </summary>
+    class EndingC :IScene
     {
         private bool isEndFlag;
         private Sound sound;
         private Score score;
-        private CountDownTimer scorePrintTimer;
 
-        public Ending(Score score)
+        public EndingC(Score score)
         {
             isEndFlag = false;
             var gameDevice = GameDevice.Instance();
             sound = gameDevice.GetSound();
-            scorePrintTimer = new CountDownTimer(3);//スコア表示時間
             this.score = score;
         }
 
         public void Draw(Renderer renderer)
         {
             renderer.Begin();
-            score.CenterDraw(renderer);
+            renderer.DrawTexture("ending", new Vector2(150, 150));
+            score.Draw(renderer);
             renderer.End();
         }
 
         public void Initialize()
         {
             isEndFlag = false;
-            scorePrintTimer.Initialize();
         }
 
         public bool IsEnd()
@@ -48,23 +48,7 @@ namespace Oikake.Scene
 
         public Scene Next()
         {
-            //スコアで分岐
-            if(score.GetScore() >= 300)
-            {
-                return Scene.EndingS;
-            }
-            else if(score.GetScore() >= 200)
-            {
-                return Scene.EndingA;
-            }
-            else if(score.GetScore() >= 100)
-            {
-                return Scene.EndingB;
-            }
-            else
-            {
-                return Scene.EndingC;
-            }
+            return Scene.Title;
         }
 
         public void Shutdown()
@@ -75,11 +59,11 @@ namespace Oikake.Scene
         public void Update(GameTime gameTime)
         {
             sound.PlayBGM("endingbgm");
-            scorePrintTimer.Update(gameTime);
 
-            if (scorePrintTimer.IsTime())
+            if (Input.GetKeyTrigger(Keys.Space))
             {
                 isEndFlag = true;
+                sound.PlaySE("endingse");
             }
         }
     }
